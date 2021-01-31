@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/__pycache__": true,
+        "**/*_cache": true,
+        "**/*.egg-info": true,
+        "**/docs/dest": true
+    },
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "pythonTestExplorer.testFramework": "pytest",
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.sortImports.path": "isort",
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true,
+    "python.pythonPath": "./.venv/bin/python3"
+}

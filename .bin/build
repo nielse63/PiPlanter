@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+cp README.md docs/README.md
+
+rm -rf build \
+    dist \
+    docs/dist
+
+python setup.py build bdist

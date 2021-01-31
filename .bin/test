@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+py.test
+
+[ -f .env ] && source .env
+bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN

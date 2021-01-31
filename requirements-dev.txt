@@ -1,0 +1,14 @@
+coverage
+flake8
+black
+pytest
+pytest-cov
+setuptools
+twine
+sphinx
+recommonmark
+mypy
+isort
+sphinx_ansible_theme
+flake8
+pre-commit
