@@ -1,11 +1,12 @@
 # get sunrise and sunset times in guatamala
 # turn light on and off at those times
-import requests
-import pytz
-from typing import Callable
 from datetime import datetime
-from loguru import logger
+from typing import Callable, Optional
+
+import pytz
+import requests
 from apscheduler.schedulers.background import BackgroundScheduler
+from loguru import logger
 
 LATITUDE = 14.628434
 LONGITUDE = -90.522713
@@ -16,12 +17,14 @@ class Light:
     @staticmethod
     def parse_datetime(datetime_string: str) -> datetime:
         datetime_obj = datetime.fromisoformat(datetime_string)
-        local_datetime = datetime_obj.astimezone(pytz.timezone("America/Guatemala"))
+        local_datetime = datetime_obj.astimezone(
+            pytz.timezone("America/Guatemala")
+        )
         return local_datetime
 
     def __init__(self) -> None:
-        self.sunrise: datetime = None
-        self.sunset: datetime = None
+        self.sunrise: Optional[datetime] = None
+        self.sunset: Optional[datetime] = None
         logger.info("Init Light class")
         self.scheduler = BackgroundScheduler()
         self.scheduler.start()
@@ -41,9 +44,19 @@ class Light:
         self.sunrise = Light.parse_datetime(data["results"]["sunrise"])
         self.sunset = Light.parse_datetime(data["results"]["sunset"])
 
-    def schedule_job(self, name: str, prop: datetime, callable: Callable) -> None:
+    def schedule_job(
+        self, name: str, prop: Optional[datetime], callable: Callable
+    ) -> None:
+        if not prop:
+            # raise ValueError("prop is not defined")
+            logger.error(f"prop is not defined for {name}")
+            return
         self.scheduler.add_job(
-            callable, trigger="date", next_run_time=prop, id=name, replace_existing=True
+            callable,
+            trigger="date",
+            next_run_time=prop,
+            id=name,
+            replace_existing=True,
         )
 
     def schedule_jobs(self) -> None:

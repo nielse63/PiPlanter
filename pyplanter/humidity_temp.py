@@ -1,6 +1,7 @@
 import time
-import board
+
 import adafruit_dht
+import board
 
 # source: https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/python-setup
 # source: https://github.com/adafruit/Adafruit_CircuitPython_DHT/blob/master/examples/dht_simpletest.py

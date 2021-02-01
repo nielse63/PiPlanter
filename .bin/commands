@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+## other useful commands
+
+# print project dependencies
+pip freeze

@@ -18,7 +18,7 @@ import sphinx_ansible_theme
 
 # -- Project information -----------------------------------------------------
 
-project = "piplanter"
+project = "pyplanter"
 copyright = "2021, Erik Nielsen"
 author = "Erik Nielsen"
 
@@ -28,11 +28,7 @@ author = "Erik Nielsen"
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-    "sphinx.ext.autodoc",
-    "sphinx.ext.todo",
-    "sphinx.ext.coverage",
-]
+extensions = ["sphinx.ext.autodoc", "sphinx.ext.todo", "sphinx.ext.coverage"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]

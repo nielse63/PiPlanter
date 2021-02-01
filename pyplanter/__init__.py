@@ -2,8 +2,12 @@
 
 # source: https://github.com/HackerShackOfficial/Automated-Gardener/blob/master/gardener.py
 import atexit
-from piplanter.light import Light
+
 from apscheduler.schedulers.base import BaseScheduler
+
+from pyplanter.light import Light
+
+__version__ = "0.0.1"
 
 
 def on_exit(scheduler: BaseScheduler) -> None:

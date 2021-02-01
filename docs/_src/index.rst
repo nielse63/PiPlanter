@@ -1,4 +1,4 @@
-piplanter
+pyplanter
 =======================================
 
 .. toctree::

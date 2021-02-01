@@ -1,6 +1,6 @@
 gardner
 ======
 
-.. automodule:: piplanter.gardner
+.. automodule:: pyplanter.gardner
     :members:
     :undoc-members:

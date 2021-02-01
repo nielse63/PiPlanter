@@ -1,23 +1,23 @@
-src = piplanter test
-files = $(src) *.py
+files = pyplanter test *.py
 
 setup:
 	.bin/setup
 
 install:
 	( \
-		source path/to/virtualenv/bin/activate; \
-		pip install --upgrade pip \
-		pip install -r requirements.txt \
-		pip install -r requirements-dev.txt
+		source .venv/bin/activate; \
+		pip install --upgrade pip; \
+		pip install -r requirements.txt; \
+		pip install -r requirements-dev.txt; \
 	)
 
 lint:
 	( \
-		source path/to/virtualenv/bin/activate; \
-		black piplanter test \
-		flake8 piplanter test \
-		mypy piplanter
+		source .venv/bin/activate; \
+		isort $(files); \
+		black $(files); \
+		flake8 $(files); \
+		mypy pyplanter; \
 	)
 
 test:

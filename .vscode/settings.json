@@ -30,5 +30,9 @@
     "python.formatting.blackArgs": [
         "--line-length=88"
     ],
-    "python.linting.mypyCategorySeverity.error": "Hint"
+    "python.linting.mypyCategorySeverity.error": "Hint",
+    "python.formatting.blackPath": ".venv/bin/black",
+    "python.linting.flake8Path": ".venv/bin/flake8",
+    "python.linting.maxNumberOfProblems": 50,
+    "python.linting.mypyPath": ".venv/bin/mypy"
 }

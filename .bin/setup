@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
-rm -rf .venv activate *.egg-info build dist *_cache/
+rm -rf .venv activate ./*.egg-info build dist ./*_cache/
 
 python3 -m venv .venv
 ln -s .venv/bin/activate activate
+# shellcheck disable=SC1091
 source activate
 pip install --upgrade pip
 pip install -r requirements.txt
 pip install -r requirements-dev.txt
 python setup.py develop
+pre-commit install

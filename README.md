@@ -1,19 +1,19 @@
-[![](https://codecov.io/gh/nielse63/piplanter/branch/master/graph/badge.svg)](https://codecov.io/gh/nielse63/piplanter)
-[![](https://img.shields.io/pypi/l/piplanter.svg)](https://github.com/nielse63/piplanter)
+[![](https://codecov.io/gh/nielse63/pyplanter/branch/master/graph/badge.svg)](https://codecov.io/gh/nielse63/pyplanter)
+[![](https://img.shields.io/pypi/l/pyplanter.svg)](https://github.com/nielse63/pyplanter)
 
-# piplanter
+# pyplanter
 
 Automate indoor plant care with a Raspberry Pi
 
 ## Install
 
-Create a new project from this template by clicking the ["Use this template"](https://github.com/nielse63/piplanter/generate) button in GitHub
+Create a new project from this template by clicking the ["Use this template"](https://github.com/nielse63/pyplanter/generate) button in GitHub
 
 _or_
 
 ```bash
-git clone https://github.com/nielse63/piplanter.git
-cd piplanter
+git clone https://github.com/nielse63/pyplanter.git
+cd pyplanter
 .bin/setup
 ```
 
@@ -42,8 +42,8 @@ sudo apt-get update -y
 sudo apt-get install libgpiod2 -y
 
 # clone the repo
-git clone https://github.com/nielse63/piplanter.git
-cd piplanter
+git clone https://github.com/nielse63/pyplanter.git
+cd pyplanter
 
 # setup and run the app
 .bin/setup
