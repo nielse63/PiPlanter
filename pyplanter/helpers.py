@@ -1,7 +1,16 @@
-import threading
-from typing import Callable, Sequence
+from datetime import datetime
+
+import pytz
 
 
-def threaded(job_func: Callable, **kwsargs: Sequence) -> None:
-    job_thread = threading.Thread(target=job_func, kwargs=dict(**kwsargs))
-    job_thread.start()
+def celcius_to_fahrenheit(temp_c: float) -> float:
+    return (temp_c * 1.8) + 32
+
+
+def parse_datetime(
+    datetime_string: str, timezone: str = "America/Chicago"
+) -> datetime:
+    datetime_obj = datetime.fromisoformat(datetime_string)
+    datetime_obj = datetime_obj.astimezone(pytz.timezone(timezone))
+    # return datetime_obj.fromisoformat()
+    return datetime_obj

@@ -9,8 +9,8 @@ from pyplanter import __version__
 # Used for the long_description.  It's nice, because now 1) we have a top level
 # README file and 2) it's easier to type in the README file than to put a raw
 # string in below ...
-def read(fname):
-    return open(Path(__file__).parent / "docs" / "README.md").read()
+def read(fname="README.md"):
+    return open(Path(__file__).parent / fname).read()
 
 
 def read_requirements(filename):
@@ -30,12 +30,12 @@ settings = dict(
     url="https://github.com/nielse63/pyplanter",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     install_requires=read_requirements("requirements.txt"),
     # tests_require=read_requirements("requirements-dev.txt"),
     classifiers=[
         "Topic :: Software Development :: Libraries :: Python Modules",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Software Development :: Libraries :: Python Modules",

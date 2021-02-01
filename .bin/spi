@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+source activate
+cd ~
+git clone git://github.com/doceme/py-spidev
+cd py-spidev/
+sudo python setup.py install

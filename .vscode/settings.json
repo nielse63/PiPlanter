@@ -8,7 +8,8 @@
         "**/__pycache__": true,
         "**/*_cache": true,
         "**/*.egg-info": true,
-        "**/docs/dest": true
+        "**/docs/dest": true,
+        "**/*.log*": false
     },
     "editor.formatOnSave": true,
     "python.formatting.provider": "black",
@@ -27,9 +28,7 @@
     "[makefile]": {
         "editor.insertSpaces": false
     },
-    "python.formatting.blackArgs": [
-        "--line-length=88"
-    ],
+    "python.formatting.blackArgs": ["--line-length=88"],
     "python.linting.mypyCategorySeverity.error": "Hint",
     "python.formatting.blackPath": ".venv/bin/black",
     "python.linting.flake8Path": ".venv/bin/flake8",
