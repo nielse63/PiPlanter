@@ -12,11 +12,23 @@
     },
     "editor.formatOnSave": true,
     "python.formatting.provider": "black",
-    "pythonTestExplorer.testFramework": "pytest",
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
     "python.sortImports.path": "isort",
     "python.linting.mypyEnabled": true,
     "python.linting.enabled": true,
-    "python.pythonPath": "./.venv/bin/python3"
+    "python.pythonPath": ".venv/bin/python",
+    "stylelint.enable": false,
+    "[python]": {
+        "gitlens.codeLens.symbolScopes": ["!Module"],
+        "editor.wordBasedSuggestions": false,
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "[makefile]": {
+        "editor.insertSpaces": false
+    },
+    "python.formatting.blackArgs": [
+        "--line-length=88"
+    ],
+    "python.linting.mypyCategorySeverity.error": "Hint"
 }

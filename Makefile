@@ -1,17 +1,24 @@
-src = pytemplate test
+src = piplanter test
 files = $(src) *.py
-test_files = *
 
 setup:
 	.bin/setup
 
 install:
-	.bin/install
+	( \
+		source path/to/virtualenv/bin/activate; \
+		pip install --upgrade pip \
+		pip install -r requirements.txt \
+		pip install -r requirements-dev.txt
+	)
 
 lint:
-	black pytemplate test
-	flake8 pytemplate test
-	mypy pytemplate
+	( \
+		source path/to/virtualenv/bin/activate; \
+		black piplanter test \
+		flake8 piplanter test \
+		mypy piplanter
+	)
 
 test:
 	.bin/test

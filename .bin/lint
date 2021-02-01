@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-black pytemplate test
-flake8 pytemplate test
-mypy pytemplate

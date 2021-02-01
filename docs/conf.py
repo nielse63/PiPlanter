@@ -18,7 +18,7 @@ import sphinx_ansible_theme
 
 # -- Project information -----------------------------------------------------
 
-project = "pytemplate"
+project = "piplanter"
 copyright = "2021, Erik Nielsen"
 author = "Erik Nielsen"
 

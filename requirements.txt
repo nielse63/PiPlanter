@@ -1,1 +1,11 @@
-# production dependencies
+requests
+schedule
+gpiozero
+setuptools
+wheel
+adafruit-circuitpython-dht
+spidev
+pytz
+apscheduler
+loguru
+RPi.GPIO

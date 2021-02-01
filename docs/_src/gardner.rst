@@ -1,6 +1,6 @@
-howdy
+gardner
 ======
 
-.. automodule:: pytemplate.howdy
+.. automodule:: piplanter.gardner
     :members:
     :undoc-members:

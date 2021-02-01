@@ -1,11 +1,11 @@
-pytemplate
+piplanter
 =======================================
 
 .. toctree::
     :maxdepth: 2
     :caption: Contents:
 
-    howdy.rst
+    gardner.rst
 
 
 

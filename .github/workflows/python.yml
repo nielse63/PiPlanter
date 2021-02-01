@@ -26,9 +26,9 @@ jobs:
           pip install -r requirements-dev.txt
       - name: Lint with flake8
         run: |
-          black pytemplate test
-          flake8 pytemplate test
-          mypy pytemplate
+          black piplanter test
+          flake8 piplanter test
+          mypy piplanter
       - name: Test and report coverage
         run: |
           py.test

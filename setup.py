@@ -1,7 +1,7 @@
 from pathlib import Path
 from setuptools import setup
 
-from pytemplate import __version__
+from piplanter import __version__
 
 
 # Utility function to read the README file.
@@ -18,15 +18,15 @@ def read_requirements(filename):
 
 
 settings = dict(
-    name="pytemplate",
-    packages=["pytemplate"],
+    name="PiPlanter",
+    packages=["piplanter"],
     version=__version__,
     author="Erik Nielsen",
     author_email="erik@312development.com",
-    description=("This is an awesome project!"),
+    description=("Automate indoor plant care with a Raspberry Pi"),
     license="MIT",
-    keywords="pytemplate",
-    url="https://github.com/nielse63/pytemplate",
+    keywords="piplanter",
+    url="https://github.com/nielse63/piplanter",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     python_requires=">=3.7",
