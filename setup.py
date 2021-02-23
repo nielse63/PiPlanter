@@ -1,7 +1,5 @@
 from pathlib import Path
-
 from setuptools import setup
-
 from pyplanter import __version__
 
 

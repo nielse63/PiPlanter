@@ -74,3 +74,6 @@ coverage.xml
 .project
 .classpath
 /gradle
+
+# data
+data/
