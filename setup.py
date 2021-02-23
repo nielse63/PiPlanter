@@ -28,7 +28,7 @@ settings = dict(
     url="https://github.com/nielse63/pyplanter",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    python_requires=">=3.8",
+    python_requires=">=3.7",
     install_requires=read_requirements("requirements.txt"),
     # tests_require=read_requirements("requirements-dev.txt"),
     classifiers=[
