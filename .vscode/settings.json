@@ -27,7 +27,7 @@
   "python.sortImports.path": "isort",
   "python.linting.mypyEnabled": true,
   "python.linting.enabled": true,
-  "python.pythonPath": "/Users/eriknielsen/git/PiPlanter/.venv/bin/python3",
+  "python.pythonPath": ".venv/bin/python3",
   "stylelint.enable": false,
   "[python]": {
     "gitlens.codeLens.symbolScopes": ["!Module"],
