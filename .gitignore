@@ -74,3 +74,8 @@ coverage.xml
 .project
 .classpath
 /gradle
+
+# other
+data/
+htmlcov/
+logs/

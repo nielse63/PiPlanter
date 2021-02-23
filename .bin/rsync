@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+
+# rsync -atlzv pyplanter/temp_humidity.py pi_black:/home/pi/pytest/pyplanter/temp_humidity.py
+rsync -avzrptl \
+    --exclude="__pycache__" \
+    --exclude=".git" \
+    --exclude=".venv" \
+    --exclude="_old" \
+    --exclude="docs" \
+    --exclude="*.egg-info" \
+    --exclude=".mypy_cache" \
+    --exclude=".pytest_cache" \
+    --exclude="*coverage*" \
+    --exclude="htmlcov" \
+    --exclude=".github" \
+    --exclude=".vscode" \
+    --exclude="data" \
+    --del \
+    ./ \
+    pi_black:/home/pi/pytest/pyplanter

@@ -1,38 +1,52 @@
 {
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/__pycache__": true,
-        "**/*_cache": true,
-        "**/*.egg-info": true,
-        "**/docs/dest": true
-    },
-    "editor.formatOnSave": true,
-    "python.formatting.provider": "black",
-    "python.linting.flake8Enabled": true,
-    "python.linting.pylintEnabled": false,
-    "python.sortImports.path": "isort",
-    "python.linting.mypyEnabled": true,
-    "python.linting.enabled": true,
-    "python.pythonPath": ".venv/bin/python",
-    "stylelint.enable": false,
-    "[python]": {
-        "gitlens.codeLens.symbolScopes": ["!Module"],
-        "editor.wordBasedSuggestions": false,
-        "editor.defaultFormatter": "ms-python.python"
-    },
-    "[makefile]": {
-        "editor.insertSpaces": false
-    },
-    "python.formatting.blackArgs": [
-        "--line-length=88"
-    ],
-    "python.linting.mypyCategorySeverity.error": "Hint",
-    "python.formatting.blackPath": ".venv/bin/black",
-    "python.linting.flake8Path": ".venv/bin/flake8",
-    "python.linting.maxNumberOfProblems": 50,
-    "python.linting.mypyPath": ".venv/bin/mypy"
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/__pycache__": true,
+    "**/*_cache": true,
+    "**/*.egg-info": true,
+    "**/docs/dest": true,
+    "**/*.log*": false
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/htmlcov": true,
+    "**/__pycache__": true,
+    "**/*_cache": true,
+    "**/.venv": true
+  },
+  "editor.formatOnSave": true,
+  "python.formatting.provider": "black",
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.sortImports.path": "isort",
+  "python.linting.mypyEnabled": true,
+  "python.linting.enabled": true,
+  "python.pythonPath": "/Users/eriknielsen/git/PiPlanter/.venv/bin/python3",
+  "stylelint.enable": false,
+  "[python]": {
+    "gitlens.codeLens.symbolScopes": ["!Module"],
+    "editor.wordBasedSuggestions": false,
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "[makefile]": {
+    "editor.insertSpaces": false
+  },
+  "python.formatting.blackArgs": ["--line-length=88"],
+  "python.linting.mypyCategorySeverity.error": "Hint",
+  "python.formatting.blackPath": ".venv/bin/black",
+  "python.linting.flake8Path": ".venv/bin/flake8",
+  "python.linting.maxNumberOfProblems": 50,
+  "python.linting.mypyPath": ".venv/bin/mypy",
+  "python.linting.mypyArgs": [
+    "--ignore-missing-imports",
+    "--follow-imports=silent",
+    "--show-column-numbers",
+    "--exclude=tests"
+  ]
 }

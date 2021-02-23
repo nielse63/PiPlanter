@@ -1,19 +1,17 @@
-# # read from moisture sensor
+#!/usr/bin/python
 
-# # Source https://tutorials-raspberrypi.com/measuring-soil-moisture-with-raspberry-pi/
-# import time
-# from typing import Any
+import spidev
+import time
 
-# import spidev
+delay = 0.2
 
-# delay = 0.2
-
-# spi = spidev.SpiDev()
+spi = spidev.SpiDev()
+print(spi)
 # spi.open(0, 0)
 # spi.max_speed_hz = 1000000
 
 
-# def readChannel(channel: int) -> Any:
+# def readChannel(channel):
 #     val = spi.xfer2([1, (8 + channel) << 4, 0])
 #     data = ((val[1] & 3) << 8) + val[2]
 #     return data
