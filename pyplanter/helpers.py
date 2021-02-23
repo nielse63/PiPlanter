@@ -1,6 +1,7 @@
 import pytz
 from datetime import datetime
 
+import pytz
 
 def celcius_to_fahrenheit(temp_c: float) -> float:
     return temp_c * (9 / 5) + 32
