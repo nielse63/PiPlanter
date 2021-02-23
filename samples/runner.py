@@ -1,7 +1,5 @@
 from typing import Callable
-
 from apscheduler.schedulers.background import BackgroundScheduler
-
 from pyplanter.logger import logger
 
 
@@ -11,14 +9,11 @@ class RunnerStateEnum:
 
 
 class Runner:
-    # scheduler = None
     state = RunnerStateEnum.STOPPED
 
     def __init__(self):
         self.state = RunnerStateEnum.RUNNING
         self.scheduler = BackgroundScheduler(logger=logger)
-        # if not Runner.scheduler:
-        #     Runner.scheduler = BackgroundScheduler()
         self.jobs = {}
 
     def add_job(self, id: str, func: Callable, **kwargs):
@@ -26,6 +21,7 @@ class Runner:
         self.jobs[id] = self.scheduler.add_job(func, **kwargs)
 
     def remove_job(self, id: str):
+        logger.debug(f"Removing job from queue: {id}")
         if not self.scheduler.get_job(id):
             logger.warning(f"Unable to remove job {id}")
             return
