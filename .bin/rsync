@@ -12,5 +12,10 @@ rsync -avzrptl \
     --exclude=".mypy_cache" \
     --exclude=".pytest_cache" \
     --exclude="*coverage*" \
+    --exclude="htmlcov" \
+    --exclude=".github" \
+    --exclude=".vscode" \
+    --exclude="data" \
+    --del \
     ./ \
     pi_black:/home/pi/pytest/pyplanter

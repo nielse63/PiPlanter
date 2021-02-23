@@ -1,67 +1,71 @@
 import requests
-import os
 import pathlib
 import datetime
 import json
 
 from pyplanter.helpers import parse_datetime
-
-LATITUDE = 14.628434
-LONGITUDE = -90.522713
-TODAY = datetime.date.today().strftime("%Y-%m-%d")
-API_URL = f"https://api.sunrise-sunset.org/json?lat={LATITUDE}&lng={LONGITUDE}&date={TODAY}&formatted=0"
-JSON_PATH = pathlib.Path(__file__).parent.parent.parent / "data/light.json"
+from pyplanter.constants import TODAY, API_URL, DEFAULT_LIGHT_DATA_PATH
 
 
-def get_from_api() -> dict:
-    response = requests.get(API_URL)
-    response.raise_for_status()
-    data = response.json()
-    sunrise = parse_datetime(data["results"]["sunrise"]).isoformat()
-    sunset = parse_datetime(data["results"]["sunset"]).isoformat()
-    return {"date": TODAY, "sunrise": sunrise, "sunset": sunset}
+class Light:
+    def __init__(self, filepath: pathlib.Path = DEFAULT_LIGHT_DATA_PATH):
+        self.today = TODAY
+        self.now = parse_datetime(datetime.datetime.now().isoformat())
+        self.filepath = filepath
+        self.setup()
+        self.light_data = self.read()
 
+    def setup(self) -> None:
+        parent = self.filepath.parent
+        parent.mkdir(parents=True, exist_ok=True)
+        if not self.filepath.exists():
+            fh = open(self.filepath, "w")
+            fh.write("[]")
+            fh.close()
 
-def write_to_file(object):
-    with open(JSON_PATH, "r") as f:
-        json_content = f.read()
-        if not json_content:
-            json_content = "[]"
-        data = json.loads(json_content)
-        data.append(object)
-        data_string = json.dumps(data, indent=2)
-        f.close()
-    fh = open(JSON_PATH, "w")
-    fh.write(data_string)
-    fh.close()
-    return data
+    def fetch_data(self) -> dict:
+        response = requests.get(API_URL)
+        response.raise_for_status()
+        data = response.json()
+        sunrise = parse_datetime(data["results"]["sunrise"]).isoformat()
+        sunset = parse_datetime(data["results"]["sunset"]).isoformat()
+        object = {"date": self.today, "sunrise": sunrise, "sunset": sunset}
+        self.append_data(object)
+        return object
 
+    def append_data(self, new_data: dict) -> list:
+        for object in self.light_data:
+            object_date = object["date"]
+            date = new_data["date"]
+            if object_date == date:
+                return self.light_data
+        self.light_data.append(new_data)
+        return self.light_data
 
-def from_file() -> list:
-    if not os.path.exists(JSON_PATH.parent):
-        os.mkdir(JSON_PATH.parent)
-    if not os.path.exists(JSON_PATH):
-        with open(JSON_PATH, "w"):
-            pass
-        return []
-    with open(JSON_PATH) as f:
-        json_content = f.read()
-    data = json.loads(json_content)
-    return data
+    def read(self) -> list:
+        with open(self.filepath) as f:
+            json_content = f.read()
+            if not json_content:
+                json_content = "[]"
+        self.light_data = json.loads(json_content)
+        return self.light_data
 
+    def save(self) -> bool:
+        if not self.filepath.exists():
+            return False
+        with open(self.filepath, "w") as f:
+            json.dump(self.light_data, f)
+        return True
 
-def get_todays_data():
-    data_array = from_file()
-    if len(data_array) and data_array[-1]["date"] == TODAY:
-        return data_array[-1]
-    data_object = get_from_api()
-    write_to_file(data_object)
-    return data_object
+    def get_latest_data(self) -> dict:
+        data = self.light_data
+        if len(data) and data[-1]["date"] == self.today:
+            return data[-1]
+        return self.fetch_data()
 
-
-def get_is_light_on(data_object: dict):
-    now = parse_datetime(datetime.datetime.now().isoformat())
-    sunrise = parse_datetime(data_object["sunrise"])
-    sunset = parse_datetime(data_object["sunset"])
-    is_light_one = now > sunrise and now < sunset
-    return is_light_one
+    def get_is_light_on(self) -> bool:
+        data_object = self.get_latest_data()
+        sunrise = parse_datetime(data_object["sunrise"])
+        sunset = parse_datetime(data_object["sunset"])
+        is_light_one = self.now > sunrise and self.now < sunset
+        return is_light_one

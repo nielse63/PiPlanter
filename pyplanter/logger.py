@@ -16,4 +16,4 @@ config = {
         ),
     ]
 }
-logger.configure(**config)
+logger.configure(handlers=config["handlers"])

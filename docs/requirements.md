@@ -5,19 +5,18 @@
 ```bash
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install build-essential python-dev -y
-sudo apt-get install libgpiod2 -y
-sudo apt-get install pigpio python-pigpio python3-pigpio -y
+sudo apt-get install libgpiod2 build-essential python-dev --upgrade -y
 ```
 
-## Install pigpiod daemon
+<!-- ## Install pigpiod daemon
 
 ```bash
+sudo apt-get install pigpio python-pigpio python3-pigpio -y
 sudo systemctl enable pigpiod
 
 # verify status
 sudo service pigpiod status
-```
+``` -->
 
 <!--
 ## Install Adafruit Python
