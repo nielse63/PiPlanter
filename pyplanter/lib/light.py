@@ -3,6 +3,7 @@ import pathlib
 import datetime
 import json
 
+from pyplanter.logger import logger
 from pyplanter.helpers import parse_datetime
 from pyplanter.constants import TODAY, API_URL, DEFAULT_LIGHT_DATA_PATH
 
@@ -16,6 +17,7 @@ class Light:
         self.light_data = self.read()
 
     def setup(self) -> None:
+        logger.debug("setting up light data")
         parent = self.filepath.parent
         parent.mkdir(parents=True, exist_ok=True)
         if not self.filepath.exists():
@@ -24,6 +26,7 @@ class Light:
             fh.close()
 
     def fetch_data(self) -> dict:
+        logger.debug("fetching light data")
         response = requests.get(API_URL)
         response.raise_for_status()
         data = response.json()
@@ -43,6 +46,7 @@ class Light:
         return self.light_data
 
     def read(self) -> list:
+        logger.debug(f"reading from file {self.filepath}")
         with open(self.filepath) as f:
             json_content = f.read()
             if not json_content:
@@ -51,6 +55,7 @@ class Light:
         return self.light_data
 
     def save(self) -> bool:
+        logger.debug(f"saving to {self.filepath}")
         if not self.filepath.exists():
             return False
         with open(self.filepath, "w") as f:
@@ -58,6 +63,7 @@ class Light:
         return True
 
     def get_latest_data(self) -> dict:
+        logger.debug("getting latest light data")
         data = self.light_data
         if len(data) and data[-1]["date"] == self.today:
             return data[-1]
