@@ -1,15 +1,15 @@
-from pyplanter.lib.tempterature import Temperature
+from pyplanter.lib.tempterature import TemperatureData
 from unittest.mock import patch
 
 
 def test_init():
-    temperature = Temperature()
+    temperature = TemperatureData()
     assert temperature
     assert temperature.device
 
 
 def test_get_data():
-    temperature = Temperature()
+    temperature = TemperatureData()
     data = temperature.get_data()
     assert data["temperature"] and type(data["temperature"]) == float
     assert data["humidity"] and type(data["humidity"]) == float
@@ -17,6 +17,6 @@ def test_get_data():
 
 @patch("adafruit_dht.DHT22")
 def test_exit(mock_device):
-    temperature = Temperature()
+    temperature = TemperatureData()
     temperature.exit()
     mock_device.assert_called_once()

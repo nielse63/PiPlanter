@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import threading
 
-from pyplanter.scripts.temperature import main as temperature_main
+from pyplanter.temperature.script import main as temperature_main
 from pyplanter.logger import logger
 
 

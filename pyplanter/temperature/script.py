@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import time
-from pyplanter.lib.tempterature import Temperature
+from pyplanter.temperature.data import TemperatureData
 from pyplanter.logger import logger
 from pyplanter.constants import TEMPERATURE_TIMEOUT
 
-temp = Temperature()
+temp = TemperatureData()
 
 
 def main():

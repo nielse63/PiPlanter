@@ -3,7 +3,7 @@ import adafruit_blinka.board.raspberrypi.raspi_40pin as board
 import pytz
 
 from datetime import datetime
-from pyplanter.lib.collection import Collection
+from pyplanter.collection import Collection
 from pyplanter.constants import LOCAL_TIMEZONE
 from pyplanter.helpers import celcius_to_fahrenheit
 from pyplanter.logger import logger
@@ -11,7 +11,7 @@ from pyplanter.logger import logger
 collection = Collection("temperature")
 
 
-class Temperature:
+class TemperatureData:
     def __init__(self) -> None:
         self.device = adafruit_dht.DHT22(board.D4, use_pulseio=False)
         self.data = {}

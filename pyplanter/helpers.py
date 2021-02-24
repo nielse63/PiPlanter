@@ -1,5 +1,7 @@
 import pytz
+
 from datetime import datetime
+from pyplanter.constants import LOCAL_TIMEZONE
 
 
 def celcius_to_fahrenheit(temp_c: float) -> float:
@@ -8,7 +10,7 @@ def celcius_to_fahrenheit(temp_c: float) -> float:
 
 def parse_datetime(
     datetime_string: str,
-    timezone: str = "America/Chicago",
+    timezone: str = LOCAL_TIMEZONE,
 ) -> datetime:
     datetime_obj = datetime.fromisoformat(datetime_string)
     datetime_obj = datetime_obj.astimezone(pytz.timezone(timezone))

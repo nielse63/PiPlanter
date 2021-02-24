@@ -11,7 +11,6 @@ logger.configure(
         dict(
             sink="logs/pyplanter.log",
             serialize=True,
-            # format="{message}",
             rotation="10 MB",
         ),
     ],
