@@ -16,15 +16,8 @@ def main():
     while True:
         try:
             # Print the values to the serial port
-            data = temp.get_data()
-            temperature_c = data["temperature_c"]
-            temperature_f = data["temperature_f"]
-            humidity = data["humidity"]
-            logger.debug(
-                "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(
-                    temperature_f, temperature_c, humidity
-                )
-            )
+            temp.get_data()
+            temp.save()
 
         except RuntimeError as error:
             # Errors happen fairly often, DHT's are hard to read, just keep going
