@@ -16,7 +16,10 @@ def main():
     while True:
         try:
             # Print the values to the serial port
-            temp.get_data()
+            data = temp.get_data()
+            logger.debug(
+                f"temperature (f): {data['temperature']}; humidity: {data['humidity']}"
+            )
             temp.save()
 
         except RuntimeError as error:

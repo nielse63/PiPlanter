@@ -5,7 +5,7 @@
 ```bash
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install libgpiod2 build-essential python-dev --upgrade -y
+sudo apt-get install build-essential python-dev python-smbus git libgpiod2
 ```
 
 <!-- ## Install pigpiod daemon

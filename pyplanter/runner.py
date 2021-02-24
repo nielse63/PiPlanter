@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 import threading
 
-from pyplanter.temperature.script import main as temperature_main
+from pyplanter.temp_and_humidity import temperature_runner
+from pyplanter.moisture import soil_moisture_runner
 from pyplanter.logger import logger
 
 
@@ -12,7 +13,8 @@ def main():
     Usage: python pyplanter/scripts/all.py
     """
     logger.debug("running all scripts")
-    threading.Thread(target=temperature_main).start()
+    threading.Thread(target=temperature_runner).start()
+    threading.Thread(target=soil_moisture_runner).start()
 
 
 if __name__ == "__main__":
