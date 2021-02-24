@@ -28,7 +28,7 @@ def main():
 
         except RuntimeError as error:
             # Errors happen fairly often, DHT's are hard to read, just keep going
-            logger.error(f"ERROR: {error.args[0]}")
+            logger.error(error.args[0])
             time.sleep(TEMPERATURE_TIMEOUT)
             continue
         except Exception as error:
