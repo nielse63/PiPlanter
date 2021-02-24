@@ -1,6 +1,7 @@
 # from datetime import date
 
 LOCAL_TIMEZONE = "America/Chicago"
+RUNNER_TIMEOUT = 5
 # LATITUDE = 14.628434
 # LONGITUDE = -90.522713
 # TODAY = date.today().strftime("%Y-%m-%d")
@@ -11,8 +12,11 @@ LOCAL_TIMEZONE = "America/Chicago"
 DB_API_URL = "https://us-central1-plants-13d3e.cloudfunctions.net/"
 
 # temperature vars
-RUNNER_TIMEOUT = 5
-# TEMPERATURE_TIMEOUT = 2
+MIN_TEMPERATURE = 68
+MAX_TEMPERATURE = 86
+MIN_HUMIDITY = 80
+MAX_HUMIDITY = 100
 
 # moisture vars
-# MOISTURE_TIMEOUT = 2
+MIN_MOISTURE_LEVEL = 0.25
+MAX_MOISTURE_LEVEL = 0.75

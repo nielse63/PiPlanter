@@ -1,15 +1,9 @@
 adafruit-blinka==6.2.2
-adafruit-circuitpython-dht==3.5.5
+adafruit-circuitpython-dht==3.5.6
 requests==2.25.1
-# schedule==1.0.0
-# RPi.GPIO==0.7.0
-# spidev==3.5
+spidev==3.5
 gpiozero==1.5.1
 setuptools==53.0.0
-# wheel==0.36.2
 pytz==2021.1
 APScheduler==3.7.0
 loguru==0.5.3
-# click==7.1.2
-# pymongo==3.11.3
-# mysql-connector-python==8.0.23
