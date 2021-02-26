@@ -17,6 +17,8 @@ rsync -avzrptl \
     --exclude=".vscode" \
     --exclude="data" \
     --exclude="logs/" \
+    --exclude="build/" \
+    --exclude="dist/" \
     --del \
     ./ \
     pi_black:/home/pi/pytest/pyplanter

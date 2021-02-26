@@ -6,13 +6,20 @@ logger.configure(
     handlers=[
         dict(
             sink=sys.stdout,
-            format="<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <4}</level> | <level>{message}</level>",
+            format="<level>{level.icon} {level: <8}</level> <light-white>[{file.name}:{line}]</light-white> {message}",
         ),
         dict(
             sink="logs/pyplanter.log",
             serialize=True,
-            format="{message}",
-            rotation="100 MB",
+            rotation="10 MB",
         ),
-    ]
+    ],
+    levels=[
+        dict(name="DEBUG", icon="●"),
+        dict(name="INFO", icon="ℹ"),
+        dict(name="SUCCESS", icon="✔"),
+        dict(name="WARNING", icon="‼"),
+        dict(name="ERROR", icon="✖"),
+        dict(name="CRITICAL", icon="ⓧ"),
+    ],
 )

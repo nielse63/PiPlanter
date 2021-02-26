@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+if `command -v deactivate`; then
+    deactivate
+fi
+
+rm -rf .venv/ activate PyPlanter.egg-info/
+
+python3 -m venv .venv
+ln -s .venv/bin/activate activate
+# shellcheck disable=SC1091
+source activate
+pip install --upgrade pip
+pip install -r requirements.txt
+python setup.py develop

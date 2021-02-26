@@ -1,17 +1,22 @@
-import pathlib
+# from datetime import date
 
-from datetime import date
+LOCAL_TIMEZONE = "America/Chicago"
+RUNNER_TIMEOUT = 5
+# LATITUDE = 14.628434
+# LONGITUDE = -90.522713
+# TODAY = date.today().strftime("%Y-%m-%d")
+# API_URL = f"https://api.sunrise-sunset.org/json?lat={LATITUDE}&lng={LONGITUDE}&date={TODAY}&formatted=0"
+# DEFAULT_LIGHT_DATA_PATH = pathlib.Path("~/.pyplanter/data/light.json").expanduser()
 
-LATITUDE = 14.628434
+# api
+DB_API_URL = "https://us-central1-plants-13d3e.cloudfunctions.net/"
 
-LONGITUDE = -90.522713
+# temperature vars
+MIN_TEMPERATURE = 68
+MAX_TEMPERATURE = 86
+MIN_HUMIDITY = 80
+MAX_HUMIDITY = 100
 
-TODAY = date.today().strftime("%Y-%m-%d")
-
-API_URL = f"https://api.sunrise-sunset.org/json?lat={LATITUDE}&lng={LONGITUDE}&date={TODAY}&formatted=0"
-
-DEFAULT_LIGHT_DATA_PATH = pathlib.Path(
-    "~/.pyplanter/data/light.json"
-).expanduser()
-
-TEMPERATURE_TIMEOUT = 5
+# moisture vars
+MIN_MOISTURE_LEVEL = 0.25
+MAX_MOISTURE_LEVEL = 0.75
