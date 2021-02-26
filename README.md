@@ -30,23 +30,28 @@ make publish    # publish build artifact
 make docs       # regenerate docs
 ```
 
-## Deploy
+## Deploy to Raspberry Pi
 
 ```bash
 # ssh into pi
-ssh pi@123.0.0.12
+ssh pi@<id_address>
 cd ~
 
 # update dependenies
 sudo apt-get update -y
-sudo apt-get install libgpiod2 -y
+sudo apt-get upgrade -y
+sudo apt-get install build-essential python-dev python-smbus git libgpiod2
 
 # clone the repo
-git clone https://github.com/nielse63/pyplanter.git
-cd pyplanter
+git clone https://github.com/nielse63/PiPlanter.git
+cd PiPlanter
 
-# setup and run the app
-.bin/setup
+# initialize the virtualenv and install dependencies
+.bin/setup-prod
+
+# run the app
+source activate
+python pyplanter/runner.py
 ```
 
 ## License
