@@ -20,7 +20,7 @@ def get_temperature_data() -> float:
 
 def get_humidity_data() -> float:
     try:
-        SensorCache.humidity = device.humidity * (9 / 5) + 32
+        SensorCache.humidity = device.humidity
     except RuntimeError as error:
         logger.warning(error.args[0])
     except Exception as error:

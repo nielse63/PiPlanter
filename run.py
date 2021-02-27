@@ -1,17 +1,16 @@
 #!/usr/bin/env python
-# import threading
+import dumper
 import time
+import os
+import sys
 
+from threading import Thread
+from pyplanter.devices.water_pump import WaterPump
 from pyplanter.sensors.air_sensor import get_temperature_data, get_humidity_data
 from pyplanter.sensors.soil_moisture_sensor import get_soil_moisture_value
+from pyplanter.devices.heater import toggle_heater
+from pyplanter.devices.humidifier import Humidifier
 from pyplanter.logger import logger
-
-# from pyplanter.constants import (
-#     RUNNER_TIMEOUT,
-#     MIN_MOISTURE_LEVEL,
-#     MIN_TEMPERATURE,
-#     MIN_HUMIDITY,
-# )
 
 
 def calculate_optimal_value(value_min: float, value_max: float) -> float:
@@ -20,13 +19,6 @@ def calculate_optimal_value(value_min: float, value_max: float) -> float:
 
 
 class Flower:
-    # soil_moisture_min: float = 0.1
-    # soil_moisture_max: float = 0.3
-    # temperature_min: float = 65
-    # temperature_max: float = 75
-    # humidity_min: float = 80
-    # humidity_max: float = 100
-    # light_value: float = 0.5
     def __init__(self):
         self.soil_moisture_min: float = 0.1
         self.soil_moisture_max: float = 0.3
@@ -47,31 +39,44 @@ class Flower:
         )
 
 
-def check_humidity(flower: Flower) -> float:
-    humidity = get_humidity_data()
-    # logger.debug(f"humidity value: {humidity}")
-
-    if humidity < flower.humidity_min:
-        logger.warning(f"humidity is too low: {humidity}")
-    return humidity
+flower = Flower()
 
 
-def check_temperature(flower: Flower) -> float:
-    temperature = get_temperature_data()
-    # logger.debug(f"temperature value: {temperature}")
+def humidity_runner() -> None:
+    humidifier = Humidifier()
+    while True:
+        humidity = get_humidity_data()
+        logger.debug(f"humidity: {humidity}")
 
-    if temperature < flower.temperature_min:
-        logger.warning(f"temperature is too low: {temperature}")
-    return temperature
+        if not humidifier.is_running and humidity < flower.humidity_min:
+            humidifier.toggle()
+        elif humidifier.is_running and humidity > flower.optimal_humidity:
+            humidifier.toggle()
+
+        time.sleep(3)
 
 
-def check_soil_moisture(flower: Flower) -> float:
-    soil_moisture = get_soil_moisture_value()
-    # logger.debug(f"soil moisture value: {soil_moisture}")
+def temperature_runner() -> None:
+    while True:
+        temperature = get_temperature_data()
+        logger.debug(f"temperature: {temperature}")
 
-    if soil_moisture < flower.soil_moisture_min:
-        logger.warning(f"low soil moisture: {soil_moisture}")
-    return soil_moisture
+        if temperature < flower.temperature_min:
+            toggle_heater()
+
+        time.sleep(3)
+
+
+def soil_moisture_runner() -> None:
+    water_pump = WaterPump()
+    dumper.dump(water_pump)
+    logger.debug("starting soil moisture runner")
+    while True:
+        soil_moisture = get_soil_moisture_value()
+        logger.debug(f"soil moisture: {soil_moisture}")
+        if soil_moisture < flower.soil_moisture_min:
+            water_pump.run()
+        time.sleep(3)
 
 
 def main() -> None:
@@ -80,18 +85,28 @@ def main() -> None:
 
     Usage: python pyplanter/runner.py
     """
-    logger.debug("starting piplanter runner")
-    flower = Flower()
+    logger.info("Starting piplanter runner")
 
-    while True:
-        humidity = check_humidity(flower)
-        temperature = check_temperature(flower)
-        soil_moisture = check_soil_moisture(flower)
-        logger.debug(
-            f"humidity: {humidity} / temperature: {temperature} / soil_moisture: {soil_moisture}"
-        )
-        time.sleep(2)
+    # try:
+    #     # Thread(name="soil_moisture", target=soil_moisture_runner).start()
+    #     # Thread(name="temperature", target=temperature_runner).start()
+    #     Thread(name="humidity", target=humidity_runner).start()
+    # except Exception as error:
+    #     logger.error(error)
+
+    Thread(name="soil_moisture", target=soil_moisture_runner).start()
+    Thread(name="temperature", target=temperature_runner).start()
+    Thread(name="humidity", target=humidity_runner).start()
 
 
 if __name__ == "__main__":
     main()
+# if __name__ == "__main__":
+#     try:
+#         main()
+#     except KeyboardInterrupt:
+#         logger.info("User is exiting")
+#         try:
+#             sys.exit(0)
+#         except SystemExit:
+#             os._exit(0)

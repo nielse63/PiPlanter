@@ -9,3 +9,4 @@ RPi.GPIO==0.7.0
 pytz==2021.1
 APScheduler==3.7.0
 loguru==0.5.3
+python-dotenv==0.15.0

@@ -1,22 +1,33 @@
 # from datetime import date
+import pathlib
+import pytz
+from datetime import tzinfo
+from dotenv import load_dotenv
 
-LOCAL_TIMEZONE = "America/Chicago"
-RUNNER_TIMEOUT = 5
-# LATITUDE = 14.628434
-# LONGITUDE = -90.522713
-# TODAY = date.today().strftime("%Y-%m-%d")
-# API_URL = f"https://api.sunrise-sunset.org/json?lat={LATITUDE}&lng={LONGITUDE}&date={TODAY}&formatted=0"
-# DEFAULT_LIGHT_DATA_PATH = pathlib.Path("~/.pyplanter/data/light.json").expanduser()
+# load .env file
+ENV_FILE_PATH = pathlib.Path(__file__).parent.parent / ".env"
+load_dotenv(ENV_FILE_PATH)
 
-# api
-DB_API_URL = "https://us-central1-plants-13d3e.cloudfunctions.net/"
+# timezone
+TIMEZONE_NAME = "America/Chicago"
+TIMEZONE = pytz.timezone(TIMEZONE_NAME)
 
-# temperature vars
-MIN_TEMPERATURE = 68
-MAX_TEMPERATURE = 86
-MIN_HUMIDITY = 80
-MAX_HUMIDITY = 100
+# environment keys
+IFTTT_KEY = "IFTTT_KEY"
+IFTTT_HEAT_ACTION = "toggle_heat"
+IFTTT_HUMIDIFIER_ACTION = "toggle_humidifier"
 
-# moisture vars
-MIN_MOISTURE_LEVEL = 0.25
-MAX_MOISTURE_LEVEL = 0.75
+# enum for the gpio pins
+class GPIOPins:
+    # temp/humidity
+    DHT22 = 4
+
+    # soil moisture
+    soil_moisture_channel = 0
+    soil_moisture_clock_pin = 11
+    soil_moisture_mosi_pin = 10
+    soil_moisture_miso_pin = 9
+    soil_moisture_select_pin = 8
+
+    # water pump
+    water_pump = 26
