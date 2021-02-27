@@ -28,7 +28,7 @@ class WaterPump:
         return self.device.value == 1
 
     def start(self):
-        logger.debug("starting water pump")
+        logger.info("Starting water pump")
         if self.is_running:
             return
         try:
@@ -38,7 +38,7 @@ class WaterPump:
             raise error
 
     def stop(self):
-        logger.debug("stopping water pump")
+        logger.info("Stopping water pump")
         try:
             self.device.off()
         except Exception as error:
