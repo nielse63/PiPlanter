@@ -1,6 +1,7 @@
-import pathlib
 import os
-from pyplanter.constants import IFTTT_KEY, ENV_FILE_PATH
+import pathlib
+
+from pyplanter.constants import ENV_FILE_PATH, IFTTT_KEY
 from pyplanter.helpers import ifttt_endpoint
 
 

@@ -1,5 +1,6 @@
-from pyplanter.lib.tempterature import TemperatureData
 from unittest.mock import patch
+
+from pyplanter.lib.tempterature import TemperatureData
 
 
 def test_init():

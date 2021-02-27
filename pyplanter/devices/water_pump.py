@@ -1,6 +1,8 @@
 import time
 from datetime import datetime
+
 from gpiozero import OutputDevice
+
 from pyplanter.constants import GPIOPins
 from pyplanter.logger import logger
 

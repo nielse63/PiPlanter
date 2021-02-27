@@ -1,7 +1,7 @@
 import os
-
 from datetime import datetime
-from pyplanter.constants import TIMEZONE, IFTTT_KEY
+
+from pyplanter.constants import IFTTT_KEY, TIMEZONE
 
 
 def celcius_to_fahrenheit(temp_c: float) -> float:

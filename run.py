@@ -1,16 +1,15 @@
 #!/usr/bin/env python
-import dumper
 import time
-import os
-import sys
-
 from threading import Thread
-from pyplanter.devices.water_pump import WaterPump
-from pyplanter.sensors.air_sensor import get_temperature_data, get_humidity_data
-from pyplanter.sensors.soil_moisture_sensor import get_soil_moisture_value
+
+import dumper
+
 from pyplanter.devices.heater import toggle_heater
 from pyplanter.devices.humidifier import Humidifier
+from pyplanter.devices.water_pump import WaterPump
 from pyplanter.logger import logger
+from pyplanter.sensors.air_sensor import get_humidity_data, get_temperature_data
+from pyplanter.sensors.soil_moisture_sensor import get_soil_moisture_value
 
 
 def calculate_optimal_value(value_min: float, value_max: float) -> float:

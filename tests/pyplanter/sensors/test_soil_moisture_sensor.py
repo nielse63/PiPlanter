@@ -1,8 +1,10 @@
 from unittest.mock import patch
+
 from gpiozero import MCP3008
 from gpiozero.pins.mock import MockFactory
-from pyplanter.sensors.soil_moisture_sensor import get_soil_moisture_value
+
 from pyplanter.logger import logger
+from pyplanter.sensors.soil_moisture_sensor import get_soil_moisture_value
 
 MCP3008.pin_factory = MockFactory()
 

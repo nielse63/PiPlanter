@@ -1,7 +1,7 @@
 # from datetime import date
 import pathlib
+
 import pytz
-from datetime import tzinfo
 from dotenv import load_dotenv
 
 # load .env file
@@ -16,6 +16,7 @@ TIMEZONE = pytz.timezone(TIMEZONE_NAME)
 IFTTT_KEY = "IFTTT_KEY"
 IFTTT_HEAT_ACTION = "toggle_heat"
 IFTTT_HUMIDIFIER_ACTION = "toggle_humidifier"
+
 
 # enum for the gpio pins
 class GPIOPins:

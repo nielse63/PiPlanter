@@ -1,7 +1,9 @@
-import board
 import adafruit_dht
-from . import SensorCache
+import board
+
 from pyplanter.logger import logger
+
+from . import SensorCache
 
 device = adafruit_dht.DHT22(board.D4)
 

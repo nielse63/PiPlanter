@@ -1,10 +1,11 @@
-import requests_mock
 import pathlib
 import tempfile
 
-from pyplanter.lib.light import Light
-from pyplanter.constants import TODAY, API_URL
+import requests_mock
+
+from pyplanter.constants import API_URL, TODAY
 from pyplanter.helpers import parse_datetime
+from pyplanter.lib.light import Light
 
 
 def before_each():

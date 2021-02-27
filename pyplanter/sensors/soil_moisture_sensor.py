@@ -1,7 +1,8 @@
 from gpiozero import MCP3008
-from pyplanter.sensors import SensorCache
-from pyplanter.logger import logger
+
 from pyplanter.constants import GPIOPins
+from pyplanter.logger import logger
+from pyplanter.sensors import SensorCache
 
 
 def get_soil_moisture_value() -> float:

@@ -1,7 +1,8 @@
-import requests
 import urllib.parse
-
 from typing import Any
+
+import requests
+
 from pyplanter.constants import DB_API_URL
 
 

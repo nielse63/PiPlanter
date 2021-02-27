@@ -1,5 +1,7 @@
 from typing import Callable
+
 from apscheduler.schedulers.background import BackgroundScheduler
+
 from pyplanter.logger import logger
 
 
