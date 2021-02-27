@@ -1,4 +1,4 @@
-from piplanter.sensors.base_sensor import BaseSensor
+from piplanter.sensors import BaseSensor
 
 
 class LightSensor(BaseSensor):

@@ -1,10 +1,13 @@
+from typing import Callable
+
+
 class BaseDevice:
     def __init__(self):
-        self.is_on = None
-        self.value = None
+        self.is_on: bool = None
+        self.value: float = None
         self.state = None
-        self.errors = None
-        self.on_error = None
+        self.errors: list = None
+        self.on_error: Callable = None
 
     def start(self):
         pass

@@ -2,8 +2,8 @@
 import threading
 import time
 
-from pyplanter.sensors.temperature import get_temperature_data
-from pyplanter.sensors.soil_moisture import get_soil_moisture_data
+from pyplanter.sensors.air_sensor import get_temperature_data, get_humidity_data
+from pyplanter.sensors.soil_moisture_sensor import get_soil_moisture_value
 from pyplanter.logger import logger
 from pyplanter.constants import (
     RUNNER_TIMEOUT,
@@ -32,19 +32,13 @@ def temperature_runner() -> None:
 
 
 def soil_moisture_runner() -> None:
-    while True:
-        time.sleep(RUNNER_TIMEOUT)
-        try:
-            data = get_soil_moisture_data()
-            if data["voltage"] < 1:
-                logger.warning("low sensor voltage ({:.2f}V)".format(data["voltage"]))
-            # logger.debug(f"soil moisture: {data}")
-            if data["value"] < MIN_MOISTURE_LEVEL:
-                # TODO: when the value is too low, turn on the pump until the soil moisture
-                # meets an acceptable level
-                logger.warning(f"low soil moisture: {data['value']}")
-        except Exception as error:
-            logger.error(error.args[0])
+    soil_moisture = get_soil_moisture_value()
+    # if data["voltage"] < 1:
+    #     logger.warning("low sensor voltage ({:.2f}V)".format(data["voltage"]))
+    if soil_moisture < MIN_MOISTURE_LEVEL:
+        # TODO: when the value is too low, turn on the pump until the soil moisture
+        # meets an acceptable level
+        logger.warning(f"low soil moisture: {soil_moisture}")
 
 
 def main() -> None:

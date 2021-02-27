@@ -1,15 +1,12 @@
-class BaseSensor:
-    def __init__(self):
-        self.name = None
-        self.status = None
-        self.value = None
-        self.voltage = None
+from typing import Any
 
-    def get_value(self):
-        pass
 
-    def get_status(self):
-        pass
+class BaseSensor(object):
+    """
+    Abstraction of a sensor. This is the super class for the sensors.
+    """
 
-    def get_voltage(self):
-        pass
+    def __init__(self) -> None:
+        self.value: float = 0
+        self.voltage: float = 0
+        self.sensor: Any = None
