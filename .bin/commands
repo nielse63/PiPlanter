@@ -7,6 +7,4 @@ set -e
 pip freeze
 
 # delete pycache folders
-find piplanter -type d -name __pycache__ -print0 | xargs /bin/rm -rf
-find pyplanter -type d -name __pycache__ -print0 | xargs /bin/rm -rf
-find tests -type d -name __pycache__ -print0 | xargs /bin/rm -rf
+find . -type d -name __pycache__ -print0 | xargs -0 /bin/rm -rf

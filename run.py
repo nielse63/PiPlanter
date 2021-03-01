@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import time
+import atexit
 from threading import Thread, Timer
 
 from pyplanter.devices.heater import toggle_heater
@@ -11,9 +12,17 @@ from pyplanter.plants.orchid import Orchid
 from pyplanter.sensors.air_sensor import get_humidity_data, get_temperature_data
 from pyplanter.sensors.soil_moisture_sensor import get_soil_moisture_value
 
+humidifier = Humidifier()
+
+
+def on_exit():
+    humidifier.off()
+
+
+atexit.register(on_exit)
+
 
 def humidity_runner(plant: BasePlant) -> None:
-    humidifier = Humidifier()
     while True:
         humidity = get_humidity_data()
         logger.debug(

@@ -20,7 +20,7 @@ class WaterPump:
     def __init__(self):
         # our relay module that controls the pump
         self.device = OutputDevice(
-            GPIOPins.water_pump, active_high=False, initial_value=False
+            GPIOPins.water_pump, active_high=True, initial_value=False
         )
 
     @property
@@ -53,3 +53,8 @@ class WaterPump:
         self.stop()
         now = datetime.now()
         logger.info(f"Watered plants at {now}")
+
+
+if __name__ == "__main__":
+    water_pump = WaterPump()
+    water_pump.start()

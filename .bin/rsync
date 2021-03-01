@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-# rsync -atlzv pyplanter/temp_humidity.py pi_black:/home/pi/pytest/pyplanter/temp_humidity.py
+source .env
+
 rsync -avzrptl \
     --exclude="__pycache__" \
     --exclude=".git" \
@@ -21,4 +22,4 @@ rsync -avzrptl \
     --exclude="dist/" \
     --del \
     ./ \
-    pi_black:/home/pi/pytest/pyplanter
+    $SSH_AUTH:$SSH_PATH

@@ -1,11 +1,12 @@
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-ra -s"
+# addopts = "-ra -s"
 log_cli = true
 testpaths = [
     "tests",
 ]
+addopts = "-ra -s --ignore-glob=tests/test_sensors_*.py"
 
 [tool.black]
 line-length = 80

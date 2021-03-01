@@ -31,4 +31,4 @@ class GPIOPins:
     soil_moisture_select_pin = 8
 
     # water pump
-    water_pump = 26
+    water_pump = 3
