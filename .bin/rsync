@@ -3,6 +3,8 @@ set -e
 
 source .env
 
+rsync -avzrptl pi_black:/home/pi/apt-list.txt ~/Downloads/apt-list.txt
+
 rsync -avzrptl \
     --exclude="__pycache__" \
     --exclude=".git" \

@@ -4,7 +4,7 @@ const path = require("path");
 const cp = require("child_process");
 
 const template = (moduleName, testName) => {
-    `import ${moduleName}
+    return `import ${moduleName}
 
 def ${testName}():
     pass
@@ -31,7 +31,10 @@ files.forEach((file) => {
     const moduleName = file
         .replace(".py", "")
         .replace("__init__", "")
-        .replace(/\//g, ".");
+        .replace(/\//g, ".")
+        .replace(/\.$/, "");
     const newContent = template(moduleName, newFileName.replace(".py", ""));
-    console.log({ file, moduleName, newFileName });
+    fs.writeFileSync(newPath, newContent, "utf8");
+    console.log(`created ${newPath}`);
 });
+cp.execSync(".venv/bin/black tests");

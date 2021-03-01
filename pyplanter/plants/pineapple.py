@@ -1,4 +1,4 @@
-from pyplanter.plants import BasePlant
+from pyplanter.plants.base_plant import BasePlant
 
 
 class PineApple(BasePlant):

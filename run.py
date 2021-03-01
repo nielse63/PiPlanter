@@ -7,7 +7,7 @@ from pyplanter.devices.heater import toggle_heater
 from pyplanter.devices.humidifier import Humidifier
 from pyplanter.devices.water_pump import WaterPump
 from pyplanter.logger import logger
-from pyplanter.plants import BasePlant
+from pyplanter.plants.base_plant import BasePlant
 from pyplanter.plants.orchid import Orchid
 from pyplanter.sensors.air_sensor import get_humidity_data, get_temperature_data
 from pyplanter.sensors.soil_moisture_sensor import get_soil_moisture_value
@@ -68,8 +68,8 @@ def main() -> None:
     logger.info("Starting piplanter runner")
 
     plant = Orchid()
-    # Thread(target=soil_moisture_runner, args=[plant]).start()
-    # Timer(1, function=temperature_runner, args=[plant]).start()
+    Thread(target=soil_moisture_runner, args=[plant]).start()
+    Timer(1, function=temperature_runner, args=[plant]).start()
     Timer(2, function=humidity_runner, args=[plant]).start()
 
 
