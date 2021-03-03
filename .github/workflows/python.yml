@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Python app
+name: CI Runner
 
 on:
   push:
@@ -29,11 +29,10 @@ jobs:
           black pyplanter tests
           flake8 pyplanter tests
           mypy pyplanter
-      # - name: Test and report coverage
-      #   run: |
-      #     py.test --cov=pyplanter --cov-report=xml
-      #     bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
-      #   env:
-      #     CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      # - name: Compile
-      #   run: python setup.py build bdist
+      - name: Test and report coverage
+        run: |
+          python setup.py develop
+          py.test
+          bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

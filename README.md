@@ -1,33 +1,47 @@
-[![](https://codecov.io/gh/nielse63/pyplanter/branch/master/graph/badge.svg)](https://codecov.io/gh/nielse63/pyplanter)
-[![](https://img.shields.io/pypi/l/pyplanter.svg)](https://github.com/nielse63/pyplanter)
+[![License](https://img.shields.io/pypi/l/PiPlanter.svg)](https://github.com/nielse63/PiPlanter)
+[![codecov](https://codecov.io/gh/nielse63/PiPlanter/branch/master/graph/badge.svg?token=PXwocWyA3R)](https://codecov.io/gh/nielse63/PiPlanter)
+[![Python app](https://github.com/nielse63/PiPlanter/actions/workflows/python.yml/badge.svg)](https://github.com/nielse63/PiPlanter/actions/workflows/python.yml)
 
-# pyplanter
+# PiPlanter
 
 Automate indoor plant care with a Raspberry Pi
 
 ## Install
 
-Create a new project from this template by clicking the ["Use this template"](https://github.com/nielse63/pyplanter/generate) button in GitHub
-
-_or_
-
 ```bash
-git clone https://github.com/nielse63/pyplanter.git
+git clone https://github.com/nielse63/PiPlanter.git
 cd pyplanter
 .bin/setup
 ```
 
 ## Usage
 
+### Install Module
+
 ```bash
-make setup      # install venv and depdencies
-make install    # install pip depdencies
-make lint       # run mypy, flake8, and black
-make test       # pytest
-make report     # generate codecov repo
-make build      # compile source
-make publish    # publish build artifact
-make docs       # regenerate docs
+source activate
+python setup.py develop
+```
+
+### Format Source
+
+```bash
+.bin/validate
+```
+
+_or_
+
+```bash
+isort .
+black .
+flake8 pyplanter
+mypy pyplanter
+```
+
+### Run Tests
+
+```bash
+py.test
 ```
 
 ## Deploy to Raspberry Pi
@@ -51,7 +65,7 @@ cd PiPlanter
 
 # run the app
 source activate
-python pyplanter/runner.py
+python run.py
 ```
 
 ## License

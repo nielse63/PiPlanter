@@ -4,7 +4,8 @@ set -e
 ## other useful commands
 
 # print project dependencies
-pip freeze
+pip freeze -r reqiurements.txt
+pip freeze -r reqiurements-dev.txt
 
 # delete pycache folders
 find . -type d -name __pycache__ -print0 | xargs -0 /bin/rm -rf

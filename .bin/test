@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-py.test
-
-[ -f .env ] && source .env
-bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
-# py.test tests/test_lib_light.py -s  --maxfail=1 --cov=pyplanter/lib --cov-report=html
