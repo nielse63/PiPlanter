@@ -5,3 +5,6 @@ set -e
 
 # print project dependencies
 pip freeze
+
+# delete pycache folders
+find . -type d -name __pycache__ -print0 | xargs -0 /bin/rm -rf

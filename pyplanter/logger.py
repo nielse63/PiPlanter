@@ -6,7 +6,7 @@ logger.configure(
     handlers=[
         dict(
             sink=sys.stdout,
-            format="<level>{level.icon} {level: <8}</level> <light-white>[{file.name}:{line}]</light-white> {message}",
+            format="<level>{time:YYYY-MM-DD HH:mm:ss.SSS} {level: <8}</level> <light-white>[{file.name}:{line}]</light-white> {message}",
         ),
         dict(
             sink="logs/pyplanter.log",

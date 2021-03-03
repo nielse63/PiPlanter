@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+const fs = require("fs");
+const path = require("path");
+const cp = require("child_process");
+
+const template = (moduleName, testName) => {
+    return `import ${moduleName}
+
+def ${testName}():
+    pass
+
+`;
+};
+
+const files = cp
+    .execSync("find pyplanter -type f -iname '*.py'")
+    .toString()
+    .trim()
+    .split("\n");
+files.forEach((file) => {
+    if (file === "pyplanter/__init__.py") return;
+    const newFileName = file
+        .replace("pyplanter", "test")
+        .replace(/__/g, "")
+        .replace(/\//g, "_");
+    const newPath = `tests/${newFileName}`;
+    const exists = fs.existsSync(newPath);
+    if (exists) return;
+    const content = fs.readFileSync(file, "utf8");
+    if (!content) return;
+    const moduleName = file
+        .replace(".py", "")
+        .replace("__init__", "")
+        .replace(/\//g, ".")
+        .replace(/\.$/, "");
+    const newContent = template(moduleName, newFileName.replace(".py", ""));
+    fs.writeFileSync(newPath, newContent, "utf8");
+    console.log(`created ${newPath}`);
+});
+cp.execSync(".venv/bin/black tests");

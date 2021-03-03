@@ -37,14 +37,14 @@
   "[makefile]": {
     "editor.insertSpaces": false
   },
-  "python.formatting.blackArgs": ["--line-length=88"],
-  "python.linting.mypyCategorySeverity.error": "Hint",
+  "python.formatting.blackArgs": [
+    "--line-length=88"
+  ],
   "python.formatting.blackPath": ".venv/bin/black",
   "python.linting.flake8Path": ".venv/bin/flake8",
   "python.linting.maxNumberOfProblems": 50,
   "python.linting.mypyPath": ".venv/bin/mypy",
   "python.linting.mypyArgs": [
-    "--ignore-missing-imports",
     "--follow-imports=silent",
     "--show-column-numbers",
     "--exclude=tests"

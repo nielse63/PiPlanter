@@ -12,5 +12,5 @@ ln -s .venv/bin/activate activate
 # shellcheck disable=SC1091
 source activate
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install --upgrade -r requirements.txt
 python setup.py develop

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import time
 
-from pyplanter.logger import logger
 from pyplanter.lib.light import Light
+from pyplanter.logger import logger
 
 
 def main():
