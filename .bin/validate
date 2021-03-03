@@ -2,7 +2,7 @@
 set -e
 
 source activate
-black .
 isort .
+black .
 flake8 pyplanter
 mypy pyplanter

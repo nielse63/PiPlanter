@@ -8,7 +8,9 @@ class Humidifier:
         self.is_running = False
 
     def toggle(self) -> None:
-        logger.info(f"Toggling humidifier state (is_running = {self.is_running})")
+        logger.info(
+            f"Toggling humidifier state (is_running = {self.is_running})"
+        )
         self.is_running = False if self.is_running else True
         iftt_webhook_action(IFTTT_HUMIDIFIER_ACTION)
 

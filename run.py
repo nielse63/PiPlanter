@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import time
 import atexit
+import time
 from threading import Thread, Timer
 
 from pyplanter.devices.heater import toggle_heater
