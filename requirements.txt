@@ -1,4 +1,4 @@
-adafruit-blinka==6.2.2
+adafruit-blinka==6.3.0
 adafruit-circuitpython-dht==3.5.8
 gpiozero==1.5.1
 spidev==3.5
