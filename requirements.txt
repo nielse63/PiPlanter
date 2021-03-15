@@ -4,7 +4,7 @@ appdirs==1.4.4
 adafruit-circuitpython-lis3dh==5.1.8
 adafruit-blinka==6.3.0
 adafruit-circuitpython-dht==3.5.8
-gpiozero==1.5.1
+gpiozero==1.6.0
 requests==2.25.1
 pytz==2021.1
 APScheduler==3.7.0
