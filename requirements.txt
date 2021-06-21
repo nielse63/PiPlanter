@@ -9,4 +9,4 @@ requests==2.25.1
 pytz==2021.1
 APScheduler==3.7.0
 loguru==0.5.3
-python-dotenv==0.15.0
+python-dotenv==0.18.0
