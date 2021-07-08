@@ -3,5 +3,5 @@ flake8==3.9.0
 pytest==6.2.2
 pytest-cov==2.11.1
 mypy==0.812
-isort==5.7.0
+isort==5.9.2
 requests-mock==1.8.0
