@@ -2,7 +2,7 @@ wheel==0.36.2
 setuptools==54.1.2
 appdirs==1.4.4
 adafruit-circuitpython-lis3dh==5.1.9
-adafruit-blinka==6.4.0
+adafruit-blinka==7.0.0
 adafruit-circuitpython-dht==3.5.8
 gpiozero==1.6.0
 requests==2.25.1
