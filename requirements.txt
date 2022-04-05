@@ -1,5 +1,5 @@
 wheel==0.36.2
-setuptools==54.1.2
+setuptools==62.0.0
 appdirs==1.4.4
 adafruit-circuitpython-lis3dh==5.1.9
 adafruit-blinka==6.4.0
